@@ -41,8 +41,8 @@ const Navbar = () => {
                 </button>
               </>
             ) : (
-              null
-              // <Link to="/login" className="text-white border border-secondary/50 hover:bg-secondary hover:text-primary px-4 py-2 rounded-md text-sm font-medium transition-all">Login</Link>
+              // null
+              <Link to="/login" className="text-white border border-secondary/50 hover:bg-secondary hover:text-primary px-4 py-2 rounded-md text-sm font-medium transition-all">Login</Link>
             )}
           </div>
 
