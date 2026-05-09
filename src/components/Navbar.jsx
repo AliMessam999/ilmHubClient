@@ -30,6 +30,7 @@ const Navbar = () => {
             <Link to="/" className="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</Link>
             <Link to="/lectures" className="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Browse Lectures</Link>
             
+            
             {user ? (
               <>
                 <Link to="/admin" className="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Admin Dashboard</Link>
