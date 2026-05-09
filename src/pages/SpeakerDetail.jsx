@@ -14,7 +14,7 @@ const SpeakerDetail = () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/speakers/${id}`);
         setSpeaker(res.data);
-        
+
         // Extract unique topics from speaker's lectures
         const allTopics = res.data.lectures.flatMap(l => l.topics || []);
         const uniqueTopics = Array.from(new Map(allTopics.map(t => [t.id, t])).values());
@@ -54,7 +54,7 @@ const SpeakerDetail = () => {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Lectures
           </Link>
-          
+
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             <div className="w-40 h-40 bg-white rounded-full border-4 border-secondary shadow-xl flex items-center justify-center flex-shrink-0 z-10 relative mt-4 md:mt-0 overflow-hidden">
               {speaker.image ? (
@@ -63,11 +63,11 @@ const SpeakerDetail = () => {
                 <span className="text-6xl font-bold text-primary">{speaker.name.charAt(0)}</span>
               )}
             </div>
-            
+
             <div className="text-center md:text-left flex-grow">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">{speaker.name}</h1>
               <p className="text-gray-300 max-w-3xl text-lg leading-relaxed mb-6 whitespace-pre-line">{speaker.bio || 'No biography available for this speaker.'}</p>
-              
+
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
                 <div className="bg-primary/50 px-4 py-2 rounded-lg border border-white/20 shadow-inner flex items-center gap-2">
                   <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>

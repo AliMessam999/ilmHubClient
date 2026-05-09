@@ -14,7 +14,7 @@ const LectureDetail = () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/lectures/${id}`);
         setLecture(res.data);
-        
+
         // Fetch related lectures (same speaker or topics)
         const relatedRes = await axios.get(`http://localhost:5000/api/lectures?speakerId=${res.data.speakerId}&limit=5`);
         setRelatedLectures(relatedRes.data.filter(l => l.id !== parseInt(id)));
@@ -87,11 +87,11 @@ const LectureDetail = () => {
           {/* Video Player */}
           <div className="relative pb-[56.25%] bg-black">
             {embedUrl ? (
-              <iframe 
-                src={embedUrl} 
-                className="absolute top-0 left-0 w-full h-full" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              <iframe
+                src={embedUrl}
+                className="absolute top-0 left-0 w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             ) : (

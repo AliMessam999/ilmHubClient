@@ -4,20 +4,20 @@ import axios from 'axios';
 
 const Lectures = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [lectures, setLectures]         = useState([]);
-  const [speakers, setSpeakers]         = useState([]);
-  const [topics, setTopics]             = useState([]);
-  const [loading, setLoading]           = useState(true);
-  const [filtersOpen, setFiltersOpen]   = useState(false); // mobile drawer
+  const [lectures, setLectures] = useState([]);
+  const [speakers, setSpeakers] = useState([]);
+  const [topics, setTopics] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filtersOpen, setFiltersOpen] = useState(false); // mobile drawer
 
   const [filters, setFilters] = useState({
-    search:    searchParams.get('search')    || '',
+    search: searchParams.get('search') || '',
     speakerId: searchParams.get('speakerId') || '',
-    topicId:   searchParams.getAll('topicId') || [],
-    language:  searchParams.get('language')  || '',
+    topicId: searchParams.getAll('topicId') || [],
+    language: searchParams.get('language') || '',
     startDate: searchParams.get('startDate') || '',
-    endDate:   searchParams.get('endDate')   || '',
-    sort:      searchParams.get('sort')      || 'latest',
+    endDate: searchParams.get('endDate') || '',
+    sort: searchParams.get('sort') || 'latest',
   });
 
   const languages = ['English', 'Urdu', 'Arabic', 'Others'];
@@ -43,12 +43,12 @@ const Lectures = () => {
       setLoading(true);
       try {
         const params = new URLSearchParams();
-        if (filters.search)    params.append('search',    filters.search);
+        if (filters.search) params.append('search', filters.search);
         if (filters.speakerId) params.append('speakerId', filters.speakerId);
-        if (filters.language)  params.append('language',  filters.language);
+        if (filters.language) params.append('language', filters.language);
         if (filters.startDate) params.append('startDate', filters.startDate);
-        if (filters.endDate)   params.append('endDate',   filters.endDate);
-        if (filters.sort)      params.append('sort',      filters.sort);
+        if (filters.endDate) params.append('endDate', filters.endDate);
+        if (filters.sort) params.append('sort', filters.sort);
         filters.topicId.forEach(id => params.append('topicId', id));
         const res = await axios.get(`http://localhost:5000/api/lectures?${params.toString()}`);
         setLectures(res.data);
@@ -126,7 +126,7 @@ const Lectures = () => {
           {topics.map(topic => (
             <label key={topic.id} className="flex items-center text-sm text-gray-700 cursor-pointer">
               <input type="checkbox" name="topicId" value={topic.id}
-                checked={filters.topicId.includes(topic.id.toString())}
+                checked={filters.topicId.includes(String(topic.id))}
                 onChange={handleFilterChange}
                 className="rounded text-primary focus:ring-primary border-gray-300 mr-2" />
               {topic.name}

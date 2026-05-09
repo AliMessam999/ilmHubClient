@@ -46,8 +46,8 @@ const Home = () => {
       <div className="relative bg-primary text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-            <path d="M50 0 L100 50 L50 100 L0 50 Z" fill="none" stroke="currentColor" strokeWidth="2"/>
-            <path d="M50 20 L80 50 L50 80 L20 50 Z" fill="none" stroke="currentColor" strokeWidth="2"/>
+            <path d="M50 0 L100 50 L50 100 L0 50 Z" fill="none" stroke="currentColor" strokeWidth="2" />
+            <path d="M50 20 L80 50 L50 80 L20 50 Z" fill="none" stroke="currentColor" strokeWidth="2" />
           </svg>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10 text-center">
@@ -80,7 +80,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-          
+
           <Swiper
             modules={[Navigation]}
             spaceBetween={30}
@@ -162,7 +162,7 @@ const Home = () => {
                       <Link to={`/lectures/${lecture.id}`} className="hover:text-primary transition-colors">{lecture.title}</Link>
                     </h3>
                     <p className="text-gray-600 text-sm flex-grow line-clamp-3 mb-4">{lecture.description}</p>
-                    
+
                     <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                       <Link to={`/speakers/${lecture.speakerId}`} className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors">
                         <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-primary font-bold">
@@ -189,9 +189,9 @@ const Home = () => {
           </div>
           <div className="flex flex-wrap gap-4">
             {popularTopics.map((topic) => (
-              <Link 
-                key={topic.id} 
-                to={`/lectures?topicId=${topic.id}`} 
+              <Link
+                key={topic.id}
+                to={`/lectures?topicId=${topic.id}`}
                 className="bg-white border border-gray-200 hover:border-secondary hover:bg-secondary/5 text-gray-800 font-medium px-6 py-3 rounded-full shadow-sm hover:shadow transition-all flex items-center gap-2"
               >
                 {topic.name}

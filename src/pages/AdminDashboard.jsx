@@ -4,27 +4,27 @@ import axios from 'axios';
 import AdminLayout from '../components/AdminLayout';
 import { AuthContext } from '../context/AuthContext';
 
-const EMPTY_SPEAKER  = { name: '', bio: '' };
-const EMPTY_TOPIC    = { name: '' };
-const EMPTY_LECTURE  = { title: '', description: '', videoUrl: '', language: 'English', date: '', speakerId: '', topicIds: [] };
+const EMPTY_SPEAKER = { name: '', bio: '' };
+const EMPTY_TOPIC = { name: '' };
+const EMPTY_LECTURE = { title: '', description: '', videoUrl: '', language: 'English', date: '', speakerId: '', topicIds: [] };
 
 const AdminDashboard = () => {
-  const [speakers, setSpeakers]   = useState([]);
-  const [topics, setTopics]       = useState([]);
-  const [lectures, setLectures]   = useState([]);
+  const [speakers, setSpeakers] = useState([]);
+  const [topics, setTopics] = useState([]);
+  const [lectures, setLectures] = useState([]);
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [loading, setLoading]     = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Form states
-  const [newSpeaker, setNewSpeaker]     = useState(EMPTY_SPEAKER);
+  const [newSpeaker, setNewSpeaker] = useState(EMPTY_SPEAKER);
   const [speakerImage, setSpeakerImage] = useState(null);
-  const [newTopic, setNewTopic]         = useState(EMPTY_TOPIC);
-  const [newLecture, setNewLecture]     = useState(EMPTY_LECTURE);
+  const [newTopic, setNewTopic] = useState(EMPTY_TOPIC);
+  const [newLecture, setNewLecture] = useState(EMPTY_LECTURE);
 
   // Edit mode: null = creating, otherwise the id being edited
   const [editingId, setEditingId] = useState(null);
 
-  const getToken  = () => localStorage.getItem('token');
+  const getToken = () => localStorage.getItem('token');
   const getConfig = () => ({ headers: { Authorization: `Bearer ${getToken()}` } });
 
   const { user, loading: authLoading } = useContext(AuthContext);
@@ -158,7 +158,7 @@ const AdminDashboard = () => {
   };
 
   /* ───────────────── UI HELPERS ───────────────── */
-  const inputCls  = 'w-full border border-gray-200 p-3 rounded-lg focus:ring-2 focus:ring-[#0B4A2B] outline-none transition';
+  const inputCls = 'w-full border border-gray-200 p-3 rounded-lg focus:ring-2 focus:ring-[#0B4A2B] outline-none transition';
   const btnPrimary = `w-full bg-[#0B4A2B] text-white font-bold py-3 rounded-lg hover:bg-[#06301c] transition-all`;
 
   /* ───────────────── DASHBOARD ───────────────── */
@@ -166,9 +166,9 @@ const AdminDashboard = () => {
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
-          { label: 'Total Speakers', count: speakers.length, color: 'blue',   icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z' },
-          { label: 'Total Topics',   count: topics.length,   color: 'purple', icon: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' },
-          { label: 'Total Lectures', count: lectures.length, color: 'green',  icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+          { label: 'Total Speakers', count: speakers.length, color: 'blue', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z' },
+          { label: 'Total Topics', count: topics.length, color: 'purple', icon: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' },
+          { label: 'Total Lectures', count: lectures.length, color: 'green', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
         ].map(({ label, count, color, icon }) => (
           <div key={label} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center">
             <div className={`p-3 rounded-full bg-${color}-100 text-${color}-600 mr-4`}>
@@ -239,11 +239,11 @@ const AdminDashboard = () => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Full Name</label>
-                <input type="text" className={inputCls} value={newSpeaker.name} onChange={e => setNewSpeaker({...newSpeaker, name: e.target.value})} required placeholder="e.g. Mufti Menk" />
+                <input type="text" className={inputCls} value={newSpeaker.name} onChange={e => setNewSpeaker({ ...newSpeaker, name: e.target.value })} required placeholder="e.g. Mufti Menk" />
               </div>
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Biography</label>
-                <textarea className={`${inputCls} h-32`} value={newSpeaker.bio} onChange={e => setNewSpeaker({...newSpeaker, bio: e.target.value})} placeholder="Speaker bio..." />
+                <textarea className={`${inputCls} h-32`} value={newSpeaker.bio} onChange={e => setNewSpeaker({ ...newSpeaker, bio: e.target.value })} placeholder="Speaker bio..." />
               </div>
             </div>
             <div className="space-y-4">
@@ -274,7 +274,7 @@ const AdminDashboard = () => {
           <form onSubmit={handleTopicSubmit} className="max-w-md space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">Topic Title</label>
-              <input type="text" className={inputCls} value={newTopic.name} onChange={e => setNewTopic({...newTopic, name: e.target.value})} required placeholder="e.g. Spirituality" />
+              <input type="text" className={inputCls} value={newTopic.name} onChange={e => setNewTopic({ ...newTopic, name: e.target.value })} required placeholder="e.g. Spirituality" />
             </div>
             <button type="submit" className={btnPrimary}>
               {isEditing ? '✏️ Update Topic' : '+ Add Topic'}
@@ -288,29 +288,29 @@ const AdminDashboard = () => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Lecture Title</label>
-                <input type="text" className={inputCls} value={newLecture.title} onChange={e => setNewLecture({...newLecture, title: e.target.value})} required />
+                <input type="text" className={inputCls} value={newLecture.title} onChange={e => setNewLecture({ ...newLecture, title: e.target.value })} required />
               </div>
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Description</label>
-                <textarea className={`${inputCls} h-24`} value={newLecture.description} onChange={e => setNewLecture({...newLecture, description: e.target.value})} />
+                <textarea className={`${inputCls} h-24`} value={newLecture.description} onChange={e => setNewLecture({ ...newLecture, description: e.target.value })} />
               </div>
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Select Speaker</label>
-                <select className={inputCls} value={newLecture.speakerId} onChange={e => setNewLecture({...newLecture, speakerId: e.target.value})} required>
+                <select className={inputCls} value={newLecture.speakerId} onChange={e => setNewLecture({ ...newLecture, speakerId: e.target.value })} required>
                   <option value="">-- Choose Speaker --</option>
                   {speakers.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Video URL (YouTube)</label>
-                <input type="url" className={inputCls} value={newLecture.videoUrl} onChange={e => setNewLecture({...newLecture, videoUrl: e.target.value})} required />
+                <input type="url" className={inputCls} value={newLecture.videoUrl} onChange={e => setNewLecture({ ...newLecture, videoUrl: e.target.value })} required />
               </div>
             </div>
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Language</label>
-                  <select className={inputCls} value={newLecture.language} onChange={e => setNewLecture({...newLecture, language: e.target.value})}>
+                  <select className={inputCls} value={newLecture.language} onChange={e => setNewLecture({ ...newLecture, language: e.target.value })}>
                     <option>English</option>
                     <option>Urdu</option>
                     <option>Arabic</option>
@@ -318,7 +318,7 @@ const AdminDashboard = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Date</label>
-                  <input type="date" className={inputCls} value={newLecture.date} onChange={e => setNewLecture({...newLecture, date: e.target.value})} />
+                  <input type="date" className={inputCls} value={newLecture.date} onChange={e => setNewLecture({ ...newLecture, date: e.target.value })} />
                 </div>
               </div>
               <div>
@@ -333,7 +333,7 @@ const AdminDashboard = () => {
                           const ids = [...newLecture.topicIds];
                           if (e.target.checked) ids.push(t.id);
                           else ids.splice(ids.indexOf(t.id), 1);
-                          setNewLecture({...newLecture, topicIds: ids});
+                          setNewLecture({ ...newLecture, topicIds: ids });
                         }}
                         className="mr-2 h-4 w-4 text-[#0B4A2B] rounded"
                       />

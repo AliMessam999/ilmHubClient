@@ -46,11 +46,11 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
-              <input 
-                type="email" 
-                value={email} 
+              <input
+                type="email"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required 
+                required
                 autoFocus
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm"
               />
@@ -58,11 +58,11 @@ const Login = () => {
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Password</label>
-              <input 
-                type="password" 
-                value={password} 
+              <input
+                type="password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required 
+                required
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm"
               />
             </div>
@@ -75,8 +75,8 @@ const Login = () => {
               <a href="#" className="text-sm text-primary hover:text-green-800 font-semibold">Forgot password?</a>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all transform hover:-translate-y-0.5"
             >
               Sign In
